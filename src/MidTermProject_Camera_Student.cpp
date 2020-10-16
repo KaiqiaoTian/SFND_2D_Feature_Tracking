@@ -64,6 +64,12 @@ int main(int argc, const char *argv[])
         frame.cameraImg = imgGray;
         dataBuffer.push_back(frame);
 
+        if(dataBuffer.size() > dataBufferSize)
+        {
+            dataBuffer.erase(dataBuffer.begin());
+
+        }
+
         //// EOF STUDENT ASSIGNMENT
         cout << "#1 : LOAD IMAGE INTO BUFFER done" << endl;
 
@@ -73,19 +79,28 @@ int main(int argc, const char *argv[])
         vector<cv::KeyPoint> keypoints; // create empty feature list for current image
         string detectorType = "SHITOMASI";
 
+
         //// STUDENT ASSIGNMENT
-        //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based selection based on detectorType
+        //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based 
+                        //selection based on detectorType
         //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
 
         if (detectorType.compare("SHITOMASI") == 0)
         {
             detKeypointsShiTomasi(keypoints, imgGray, false);
         }
-        else
+       if (detectorType.compare("HARRIS") == 0)
         {
-            //...
+      //      detKeypointsHarris(keypoints, imgGray, true);
         }
+    //    else if (detectorType.compare("MODERN") == 0)
+     //   {
+    //        detKeypointsModern(keypoints, imgGray, detectorType, true);
+     //   }
         //// EOF STUDENT ASSIGNMENT
+
+
+
 
         //// STUDENT ASSIGNMENT
         //// TASK MP.3 -> only keep keypoints on the preceding vehicle
