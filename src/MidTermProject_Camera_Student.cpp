@@ -201,7 +201,7 @@ int main(int argc, const char *argv[])
                              matches, descriptorType, matcherType, selectorType);
 
             //// EOF STUDENT ASSIGNMENT
-
+                matches_total += matches.size();
             // store matches in current data frame
             (dataBuffer.end() - 1)->kptMatches = matches;
 
@@ -228,7 +228,16 @@ int main(int argc, const char *argv[])
         }
             time_total += time_setup + time_des;
     } // eof loop over all images
- std::cout << "| Detector + Descriptor |" << "Total Keypoints |" << "Total Matches |" << "Total Time (ms) |" << "Ratio (matches/time) |" << "\n";
+
+    std::cout << "\n**********SUMMARY**********\n";
+    std::cout << detectorType << " + " << descriptorType << " + " << descriptorType_HOG_BIN << "\n";
+    std::cout << "Total number of Key-points = " << keypoint_total << "\n";
+    std::cout << "Total number of Matches = " << matches_total << "\n";
+    std::cout << "Total time = " << time_total * 1000.0 << " ms \n";
+    std::cout << "Ratio = " << matches_total / (time_total * 1000.0) << " matches/ms \n";
+
+
+    std::cout << "| Detector + Descriptor |" << "Total Keypoints |" << "Total Matches |" << "Total Time (ms) |" << "Ratio (matches/time) |" << "\n";
     std::cout << "|:---:|:----:|:-----:|:-----:|:-----:|\n";
     std::cout << "| " << detectorType << " + " << descriptorType << " |" << keypoint_total << " |" << matches_total << " |" << time_total * 1000.0 << " |" << matches_total / (time_total * 1000.0) << " |"<< "\n";
     return 0;
