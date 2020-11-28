@@ -213,13 +213,17 @@ int main(int argc, const char *argv[])
             {
                 cv::Mat matchImg = ((dataBuffer.end() - 1)->cameraImg).clone();
                 cv::drawMatches((dataBuffer.end() - 2)->cameraImg, (dataBuffer.end() - 2)->keypoints,
+
                                 (dataBuffer.end() - 1)->cameraImg, (dataBuffer.end() - 1)->keypoints,
                                 matches, matchImg,
+
                                 cv::Scalar::all(-1), cv::Scalar::all(-1),
                                 vector<char>(), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
+
                 string windowName = "Matching keypoints between two camera images";
                 cv::namedWindow(windowName, 7);
+
                 cv::imshow(windowName, matchImg);
                 cout << "Press key to continue to next image" << endl;
                 cv::waitKey(0); // wait for key to be pressed
@@ -229,16 +233,23 @@ int main(int argc, const char *argv[])
             time_total += time_setup + time_des;
     } // eof loop over all images
 
-    std::cout << "\n**********SUMMARY**********\n";
+    std::cout << "\n-------------SUMMARY-----------\n";
     std::cout << detectorType << " + " << descriptorType << " + " << descriptorType_HOG_BIN << "\n";
     std::cout << "Total number of Key-points = " << keypoint_total << "\n";
+
     std::cout << "Total number of Matches = " << matches_total << "\n";
+
     std::cout << "Total time = " << time_total * 1000.0 << " ms \n";
+
     std::cout << "Ratio = " << matches_total / (time_total * 1000.0) << " matches/ms \n";
 
 
     std::cout << "| Detector + Descriptor |" << "Total Keypoints |" << "Total Matches |" << "Total Time (ms) |" << "Ratio (matches/time) |" << "\n";
+
     std::cout << "|:---:|:----:|:-----:|:-----:|:-----:|\n";
+
     std::cout << "| " << detectorType << " + " << descriptorType << " |" << keypoint_total << " |" << matches_total << " |" << time_total * 1000.0 << " |" << matches_total / (time_total * 1000.0) << " |"<< "\n";
+
     return 0;
+
 }
