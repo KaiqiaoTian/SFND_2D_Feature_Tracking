@@ -45,6 +45,23 @@ See the classroom instruction and code comments for more details on each of thes
 3. Compile: `cmake .. && make`
 4. Run it: `./2D_feature_tracking`.
 
+## My Method as follow:
+* First, you will focus on loading images, setting up data structures and putting everything into a ring buffer to optimize memory load. 
+
+  The ring buffer optimize memory by processing only two pic at one time. I used vector erase function to limit the img number to 2.
+
+
+* Then, you will integrate several keypoint detectors such as HARRIS, FAST, BRISK and SIFT and compare them with regard to number of keypoints and speed. 
+
+  This task is to integrate several detectors, I use if and else function for each method for HARRIS, SHITOMASI AND SIFT
+
+* In the next part, you will then focus on descriptor extraction and matching using brute force and also the FLANN approach we discussed in the previous lesson. 
+
+ In this task we have to select usful keypoint from all point by limit the x,y value of the point. If the keypoint with in the boundingbox region, we count this is usful point, otherwise, we ignore it.
+
+* In the last part, once the code framework is complete, you will test the various algorithms in different combinations and compare them with regard to some performance measures. 
+
+  This is comparsion part for all method, and get the result.
 Here is my best result table:
 
 No. 	Detector + Descriptor 	Total Keypoints 	Total Matches 	Total Time (ms) 	Ratio (matches/time)
