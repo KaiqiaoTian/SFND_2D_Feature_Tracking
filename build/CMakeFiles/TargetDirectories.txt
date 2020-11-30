@@ -1,3 +1,0 @@
-/home/makers/Udacity_SFND/SFND_2D_Feature_Tracking/build/CMakeFiles/rebuild_cache.dir
-/home/makers/Udacity_SFND/SFND_2D_Feature_Tracking/build/CMakeFiles/2D_feature_tracking.dir
-/home/makers/Udacity_SFND/SFND_2D_Feature_Tracking/build/CMakeFiles/edit_cache.dir
